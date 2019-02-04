@@ -1,0 +1,10 @@
+[user]
+	email = guobingfang20040616@gmail.com
+	name = greatbridf
+	signingkey = 9ABDC54F814D7D8D
+[alias]
+	st = status
+	co = checkout
+	br = branch
+[commit]
+	gpgsign = true
