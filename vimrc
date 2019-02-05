@@ -16,9 +16,14 @@ filetype plugin on
 source ~/.vim/vundlerc
 
 " Use molokai color scheme
-colorscheme molokai
-let g:molokai_original = 1
+colorscheme monokai
 
 " Map shortcuts
-map <C-n> :NERDTreeToggle<CR>
+nmap lb ^
+nmap le $
+nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-g> :GitGutterToggle<CR>
+imap <C-i> <ESC>
+map <C-t>t :tabnew<CR>
+map <C-t>n :tabnext<CR>
 

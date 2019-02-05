@@ -1,0 +1,10 @@
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" Plugins
+Bundle 'docunext/closetag.vim'
+Bundle 'sickill/vim-monokai'
+Bundle 'scrooloose/nerdtree'
+Bundle 'matchit.zip'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'vim-airline/vim-airline'
+Bundle 'airblade/vim-gitgutter'
