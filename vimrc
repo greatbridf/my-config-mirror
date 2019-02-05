@@ -2,6 +2,8 @@ syntax on
 set expandtab
 set cindent
 set autoindent
+set smartindent
+set nocompatible
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
