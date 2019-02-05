@@ -1,10 +1,14 @@
 syntax on
 set expandtab
 set cindent
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set autoindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set backspace=2
 set nu
+
+filetype plugin on
 
 " Include Vundle
 source ~/.vim/vundlerc
