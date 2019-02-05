@@ -19,8 +19,6 @@ source ~/.vim/vundlerc
 colorscheme monokai
 
 " Map shortcuts
-nmap lb ^
-nmap le $
 nmap <C-n> :NERDTreeToggle<CR>
 nmap <C-g> :GitGutterToggle<CR>
 imap <C-i> <ESC>

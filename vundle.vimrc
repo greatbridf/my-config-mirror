@@ -2,7 +2,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " Plugins
 Bundle 'docunext/closetag.vim'
-Bundle 'sickill/vim-monokai'
+Bundle 'crusoexia/vim-monokai'
 Bundle 'scrooloose/nerdtree'
 Bundle 'matchit.zip'
 Bundle 'nathanaelkane/vim-indent-guides'
