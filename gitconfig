@@ -7,6 +7,8 @@
 	co = checkout
 	br = branch
 	d = difftool
+	adda = add -A
+	s = status
 [commit]
 	gpgsign = true
 [diff]
@@ -14,3 +16,6 @@
 [difftool]
 	prompt = false
 	trustExitCode = true
+[merge]
+	tool = vimdiff
+	conflictstyle = merge

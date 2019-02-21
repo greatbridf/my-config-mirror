@@ -1,14 +1,17 @@
 syntax on
 set expandtab
-set cindent
+"set cindent
+"set softtabstop=4
+set shiftwidth=2
 set autoindent
 set smartindent
 set nocompatible
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
 set backspace=2
 set nu
+
+" Encodings
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 filetype plugin on
 
@@ -21,7 +24,8 @@ colorscheme monokai
 " Map shortcuts
 nmap <C-n> :NERDTreeToggle<CR>
 nmap <C-g> :GitGutterToggle<CR>
-imap <C-i> <ESC>
-map <C-t>t :tabnew<CR>
-map <C-t>n :tabnext<CR>
+vmap <TAB> <ESC>
+imap <TAB> <ESC>
+map <C-t><C-t> :tabnew<CR>
+map <C-t><C-n> :tabnext<CR>
 
