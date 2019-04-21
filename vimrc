@@ -29,4 +29,9 @@ vmap <TAB> <ESC>
 imap <TAB> <ESC>
 map <C-t><C-t> :tabnew<CR>
 map <C-t><C-n> :tabnext<CR>
+nmap yall Gvgg"+y
+nmap <C-t><C-r> :execute "!g++ ".expand("%:t")."&&./a.out&&rm a.out"<CR>
 
+" Emmet config
+
+let g:user_emmet_leader_key=','
