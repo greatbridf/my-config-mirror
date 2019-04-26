@@ -4,6 +4,8 @@ set expandtab
 "set softtabstop=4
 set shiftwidth=2
 set autoindent
+set hlsearch
+set incsearch
 set smartindent
 set nocompatible
 set tabstop=2
