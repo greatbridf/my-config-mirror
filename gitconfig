@@ -11,6 +11,7 @@
 	s = status
 [commit]
 	gpgsign = true
+  template = ~/.gitmessage
 [diff]
 	tool = vimdiff
 [difftool]
@@ -19,3 +20,8 @@
 [merge]
 	tool = vimdiff
 	conflictstyle = merge
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

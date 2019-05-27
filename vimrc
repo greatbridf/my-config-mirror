@@ -27,8 +27,7 @@ colorscheme monokai
 " Map shortcuts
 nmap <C-n> :NERDTreeToggle<CR>
 nmap <C-g> :GitGutterToggle<CR>
-vmap <TAB> <ESC>
-imap <TAB> <ESC>
+imap <TAB> <C-p>
 map <C-t><C-t> :tabnew<CR>
 map <C-t><C-n> :tabnext<CR>
 nmap yall Gvgg"+y
