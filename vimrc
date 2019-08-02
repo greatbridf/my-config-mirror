@@ -8,10 +8,10 @@ set hlsearch
 set incsearch
 set smartindent
 set nocompatible
+set noesckeys
 set tabstop=2
 set backspace=2
-set nu
-
+set nu 
 " Encodings
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
@@ -35,4 +35,16 @@ nmap <C-t><C-r> :execute "!g++ ".expand("%:t")."&&./a.out&&rm a.out"<CR>
 
 " Emmet config
 
+let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key=','
+autocmd FileType html,css EmmetInstall
+autocmd BufRead,BufNewFile *.ts set filetype=typescript
+
+" MatchTagAlways config
+
+let g:mta_filetypes = {
+  \ 'html': 1,
+  \ 'xhtml': 1,
+  \ 'xml': 1,
+  \ 'jinja': 1,
+  \}

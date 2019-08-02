@@ -8,6 +8,7 @@
 	br = branch
 	d = difftool
 	adda = add -A
+  lo = log --all --graph --oneline
 	s = status
 [commit]
 	gpgsign = true
