@@ -11,7 +11,7 @@
   lo = log --all --graph --oneline
 	s = status
 [commit]
-	gpgsign = true
+  gpgsign = true
   template = ~/.gitmessage
 [diff]
 	tool = vimdiff

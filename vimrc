@@ -31,7 +31,7 @@ imap <TAB> <C-p>
 map <C-t><C-t> :tabnew<CR>
 map <C-t><C-n> :tabnext<CR>
 nmap yall Gvgg"+y
-nmap <C-t><C-r> :execute "!g++ ".expand("%:t")."&&./a.out&&rm a.out"<CR>
+nmap <C-t><C-r> :execute "!g++ --std=c++2a ".expand("%:t")."&&./a.out&&rm a.out"<CR>
 
 " Emmet config
 
