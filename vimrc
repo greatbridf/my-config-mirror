@@ -36,3 +36,11 @@ nmap <C-t><C-r> :execute "!g++ ".expand("%:t")."&&./a.out&&rm a.out"<CR>
 " Emmet config
 
 let g:user_emmet_leader_key=','
+
+" Highlight trailing spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
