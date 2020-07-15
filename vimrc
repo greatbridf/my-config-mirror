@@ -11,7 +11,7 @@ set nocompatible
 set noesckeys
 set tabstop=2
 set backspace=2
-set nu 
+set nu
 " Encodings
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
@@ -37,6 +37,7 @@ nmap <C-t><C-r> :execute "!g++ --std=c++2a ".expand("%:t")."&&./a.out&&rm a.out"
 
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key=','
+
 autocmd FileType html,css EmmetInstall
 autocmd BufRead,BufNewFile *.ts set filetype=typescript
 
@@ -48,3 +49,11 @@ let g:mta_filetypes = {
   \ 'xml': 1,
   \ 'jinja': 1,
   \}
+
+" Highlight trailing spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
