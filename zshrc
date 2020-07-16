@@ -28,6 +28,12 @@ plugins=(git)
 
 if [ -e $ZSH/oh-my-zsh.sh ]; then
   source $ZSH/oh-my-zsh.sh
+
+# prompt
+  NEWLINE=$'\n'
+  PROMPT="[%{$fg_bold[green]%}%M%{$reset_color%}:%{$fg_bold[cyan]%}%~%{$reset_color%}]${NEWLINE}"
+  PROMPT+="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
+  PROMPT+=' $(git_prompt_info)'
 else
   echo "zsh is not found in $ZSH/oh-my-zsh.sh"
 fi
