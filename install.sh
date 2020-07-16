@@ -10,6 +10,7 @@ echo "deployment target 'HOME=$__HOME'"
 __DIRS=(
        "$__HOME/.vim"
        "$__HOME/.vim/bundle/vundle"
+       "$__HOME/.oh-my-zsh"
        )
 __FILES=(
         "$__HOME/.bash_profile"
@@ -81,6 +82,8 @@ install() {
     deploy vundle.vimrc $__HOME/.vim/vundlerc
 
     deploy_to_home zshrc
+    echo "run the command below to install oh-my-zsh"
+    echo 'sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 
     echo "fin"
     exit
