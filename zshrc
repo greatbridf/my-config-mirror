@@ -58,12 +58,12 @@ if (which npm > /dev/null 2> /dev/null); then
   --userconfig=$HOME/.cnpmrc"
 fi
 
-OS=$(uname -s)
-if [ $OS = "Linux" ]; then
-  alias __PROXY='HTTPS_PROXY=http://127.0.0.1:1080'
-elif [ $OS = "Darwin" ]; then
-  alias __PROXY='HTTPS_PROXY=http://127.0.0.1:1087'
-fi
+#OS=$(uname -s)
+#if [ $OS = "Linux" ]; then
+#  alias __PROXY='HTTPS_PROXY=http://127.0.0.1:1080'
+#elif [ $OS = "Darwin" ]; then
+   alias __PROXY='HTTPS_PROXY=http://127.0.0.1:1087'
+#fi
 
 export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)
