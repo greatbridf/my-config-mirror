@@ -34,7 +34,7 @@ fi
 
 # User configuration
 
-if [ -e $(which go) ]; then
+if (which go > /dev/null 2> /dev/null); then
   export GOROOT=/usr/local/opt/go/libexec
   export GOPATH=/Users/david/.go
   export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
@@ -45,7 +45,7 @@ alias ll="ls -lh"
 alias sizeof="du -hd 0"
 alias glggao='glgga --oneline'
 
-if [ -e $(which npm) ]; then
+if (which npm > /dev/null 2> /dev/null); then
   alias cnpm="npm --registry=https://registry.npm.taobao.org \
   --cache=$HOME/.npm/.cache/cnpm \
   --disturl=https://npm.taobao.org/dist \
