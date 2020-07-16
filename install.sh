@@ -17,21 +17,30 @@ __FILES=(
         "$__HOME/.gitmessage"
         "$__HOME/.vimrc"
         "$__HOME/.vim/vundlerc"
+        "$__HOME/.zshrc"
         )
+
+check_file() {
+  if [ -f $1 ]; then
+    echo "test file $1 failed, exiting..."
+    exit
+  fi
+}
+
+check_dir() {
+  if [ -d $1 ]; then
+      echo "test dir $1 failed, exiting..."
+      exit
+  fi
+}
 
 check_file_existance() {
     for dir in "${__DIRS[@]}"; do
-        if [ -d $dir ]; then
-            echo "test dir $dir failed, exiting..."
-            exit
-        fi
+      check_dir $dir
     done
 
     for file in "${__FILES[@]}"; do
-        if [ -f $file ]; then
-            echo "test file $file failed, exiting..."
-            exit
-        fi
+      check_file $file
     done
 }
 
@@ -71,8 +80,16 @@ install() {
     git clone https://github.com/VundleVim/Vundle.vim.git $__HOME/.vim/bundle/vundle
     deploy vundle.vimrc $__HOME/.vim/vundlerc
 
+    deploy_to_home zshrc
+
     echo "fin"
     exit
 }
-check_file_existance
-install
+if [ $1 ]; then
+  check_file $__HOME/.$1
+  deploy_to_home $1
+  echo "fin"
+else
+  check_file_existance
+  install
+fi
