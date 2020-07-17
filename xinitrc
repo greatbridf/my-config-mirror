@@ -50,6 +50,11 @@ fi
 
 # user customize
 
+# refresh rate
+if [ $1 != "--vnc" ]; then
+    xrandr --output DP-0 --mode 1920x1080 --refresh 144
+fi
+
 # input method
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
