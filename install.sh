@@ -19,6 +19,7 @@ __FILES=(
         "$__HOME/.vimrc"
         "$__HOME/.vim/vundlerc"
         "$__HOME/.zshrc"
+        "$__HOME/.xinitrc"
         )
 
 check_file() {
@@ -84,6 +85,9 @@ install() {
     deploy_to_home zshrc
     echo "run the command below to install oh-my-zsh"
     echo 'sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+
+    echo "[recommended] install package: xorg i3 pulseaudio fcitx feh termite"
+    deploy_to_home xinitrc
 
     echo "fin"
     exit

@@ -2,14 +2,14 @@ syntax on
 set expandtab
 "set cindent
 "set softtabstop=4
-set shiftwidth=2
+set shiftwidth=4
 set autoindent
 set hlsearch
 set incsearch
 set smartindent
 set nocompatible
 set noesckeys
-set tabstop=2
+set tabstop=4
 set backspace=2
 set nu
 " Encodings
