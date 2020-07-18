@@ -51,6 +51,8 @@ alias ll="ls -lh"
 alias sizeof="du -hd 0"
 alias glggao='glgga --oneline'
 
+alias c="clear"
+
 if (which npm > /dev/null 2> /dev/null); then
   alias cnpm="npm --registry=https://registry.npm.taobao.org \
   --cache=$HOME/.npm/.cache/cnpm \
