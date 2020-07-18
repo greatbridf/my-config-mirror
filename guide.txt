@@ -1,0 +1,18 @@
+Configuration Installation Guide
+
+##############
+- oh my zsh
+
+install.sh script only hints the command for installing manually
+
+Proxy may be needed for downloading installation script
+##############
+
+
+##############
+- termite
+
+Install pacman package termite
+
+Install termite-config to $HOME/.config/termite/config
+##############
