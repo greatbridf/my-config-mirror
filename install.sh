@@ -20,6 +20,7 @@ __FILES=(
         "$__HOME/.vim/vundlerc"
         "$__HOME/.zshrc"
         "$__HOME/.xinitrc"
+        "$__HOME/.config/i3/config"
         )
 
 check_file() {
@@ -46,6 +47,16 @@ check_file_existance() {
     done
 }
 
+create_dir_if_not_exist() {
+    if [ ! -d $1 ]; then
+        echo "directory $1 do not exist, creating..."
+        if ! mkdir -p $1; then
+            echo "cannot create directory: $1 , exiting..."
+            exit 1
+        fi
+    fi
+}
+
 message() {
     if [ $2 ]; then
         echo "deploying $1 to $2"
@@ -55,7 +66,9 @@ message() {
 }
 deploy() {
     message $1 $2
-    ln -s $(pwd)/$1 $2
+    if ! ln -s $(pwd)/$1 $2; then
+        echo "cannot deploy $1 to $2 , exiting..."
+    fi
 }
 deploy_to_home() {
     if [ $2 ]; then
@@ -89,9 +102,22 @@ install() {
     echo "[recommended] install package: xorg i3 pulseaudio fcitx feh termite"
     deploy_to_home xinitrc
 
+    install_i3_config
+
     echo "fin"
     exit
 }
+
+install_i3_config() {
+    create_dir_if_not_exist $HOME/.config/i3
+    deploy i3-config $HOME/.config/i3/config
+}
+
+if [ $1 = "i3-config" ]; then
+    install_i3_config
+    exit
+fi
+
 if [ $1 ]; then
   check_file $__HOME/.$1
   deploy_to_home $1
