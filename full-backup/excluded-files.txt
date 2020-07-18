@@ -1,0 +1,8 @@
+# temporary files
+/mnt/tmp/*
+
+# pacman cache
+/mnt/var/cache/pacman/pkg
+
+# caches
+/mnt/home/david/.cache
