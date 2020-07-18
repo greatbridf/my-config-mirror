@@ -12,8 +12,8 @@ xcompmgr &
 # set desktop background color
 xsetroot -solid grey
 
-# set desktop background
-feh --bg-fill --randomize $HOME/Desktop/* &
+# set desktop background (done by i3)
+# feh --bg-fill --randomize $HOME/Desktop/* &
 
 # start dbus
 export $(dbus-launch)
