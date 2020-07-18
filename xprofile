@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# refresh rate (consider removing it if it displays abnormally)
+xrandr --output DP-0 --mode 1920x1080 --refresh 144
+
+# map keyboard
+xmodmap $HOME/.Xmodmap
+
+# set desktop background color
+xsetroot -solid grey
+
+# set desktop background
+feh --bg-fill --randomize $HOME/Desktop/* &
+
+# start dbus
+export $(dbus-launch)
+
+# start fcitx
+fcitx -d
+
+# input method
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+
+# start pulseaudio
+while pulseaudio --check; do
+    pulseaudio -k
+    pulseaudio --start
+done
+pasystray &
+
+export TERMINAL=termite
+export XKL_XMODMAP_DISABLE=1
+export PATH=$PATH:$HOME/.bin
+
+exec i3
