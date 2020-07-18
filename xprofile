@@ -6,6 +6,9 @@ xrandr --output DP-0 --mode 1920x1080 --refresh 144
 # map keyboard
 xmodmap $HOME/.Xmodmap
 
+# set transparency
+xcompmgr &
+
 # set desktop background color
 xsetroot -solid grey
 
