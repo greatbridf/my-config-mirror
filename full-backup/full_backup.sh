@@ -5,21 +5,21 @@ if [ ! $EUID == 0 ]; then
     exit 1
 fi
 
-echo "full system backup"
+echo "Full system backup"
 
-read -p "select your backup destination " DEST
+read -p "Select your backup destination " DEST
 
 echo "DEST = $DEST"
 
 if [ ! -d $DEST ]; then
-    echo "backup destination do not exist, abort"
+    echo "Backup destination do not exist, abort"
     exit 1
 fi
 
-read -p "are you sure to start a backup? (y/N) " FLAG
+read -p "Are you sure to start a backup? (y/N) " FLAG
 
 if [ ! $FLAG ] || [ $FLAG != "y" ]; then
-    echo "abort"
+    echo "Abort"
     exit 1
 fi
 
@@ -32,14 +32,17 @@ DATE=$(date +%F)
 DESTFILE=$DISTRO-$TYPE-$DATE.tar.gz
 
 if [ ! -e $EXCLUDED_FILES_TXT ]; then
-    echo "excluded-files.txt not found, abort"
+    echo "Excluded-files.txt not found, abort"
     exit 1
 fi
 
-read -p "backup $BACKUP_FILES to $DEST/$DESTFILE ? (y/N) " FLAG
+read -p "Backup $BACKUP_FILES to $DEST/$DESTFILE ? (y/N) " FLAG
 if [ ! $FLAG ] || [ $FLAG != "y" ]; then
-    echo "abort"
+    echo "Abort"
     exit 1
 fi
 
-tar --xattrs --exclude-from=$EXCLUDED_FILES_TXT -czpvf - $BACKUP_FILES | pv > $DEST/$DESTFILE
+# --preserve-permissions = -p
+# --xattrs => extended attributes
+
+tar --xattrs --preserve-permissions --exclude-from=$EXCLUDED_FILES_TXT -czvf - $BACKUP_FILES | pv > $DEST/$DESTFILE
