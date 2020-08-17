@@ -11,6 +11,8 @@ parser.add_argument("-o", dest="output", default=".", help="output directory")
 parser.add_argument("-X", dest="exclude", default="exclude-files.txt", help="files to exclude")
 parser.add_argument("--no-exclude", dest="use_exclude", action="store_false",
         help="do not use exclude file")
+parser.add_argument("-v", dest="verbose", action="store_true",
+        help="verbosely show files processed")
 
 args = parser.parse_args()
 date = datetime.now().strftime("%Y-%m-%d")
@@ -41,7 +43,10 @@ command = f"tar -g {args.output}/tar_snapshot "
 if args.use_exclude:
     command += f"-X {args.exclude} "
 
-command += f"-czpvf {args.output}/backup_{date}_"
+command += "-czp"
+if args.verbose:
+    command += "v"
+command += f"f {args.output}/backup_{date}_"
 
 if first:
     command += "full.tar.gz "
