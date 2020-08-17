@@ -1,8 +1,8 @@
 # temporary files
-./tmp
+./tmp/*
 
 # pacman cache
-./var/cache/pacman/pkg
+./var/cache/pacman/pkg/*
 
 # home dir
 ./home/*
