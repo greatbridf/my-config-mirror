@@ -67,7 +67,7 @@ fi
    alias __PROXY='HTTPS_PROXY=http://127.0.0.1:1087'
 #fi
 
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)
 export EDITOR='vim'
 
