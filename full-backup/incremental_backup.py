@@ -13,6 +13,8 @@ parser.add_argument("--no-exclude", dest="use_exclude", action="store_false",
         help="do not use exclude file")
 parser.add_argument("-v", dest="verbose", action="store_true",
         help="verbosely show files processed")
+parser.add_argument("--pigz", dest="pigz", action="store_true",
+        help="use multi-process compressing tool")
 
 args = parser.parse_args()
 date = datetime.now().strftime("%Y-%m-%d")
@@ -43,7 +45,11 @@ command = f"tar -g {args.output}/tar_snapshot "
 if args.use_exclude:
     command += f"-X {args.exclude} "
 
-command += "-czp"
+if args.pigz:
+    command += "--use-compress-program=pigz -cp"
+else:
+    command += "-czp"
+
 if args.verbose:
     command += "v"
 command += f"f {args.output}/backup_{date}_"
