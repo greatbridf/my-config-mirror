@@ -1,12 +1,12 @@
 syntax on
 set expandtab
-"set cindent
+set cindent
 "set softtabstop=4
 set shiftwidth=4
 set autoindent
 set hlsearch
 set incsearch
-set smartindent
+"set smartindent
 set nocompatible
 set noesckeys
 set tabstop=4
@@ -58,3 +58,7 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" YouCompleteMe
+nmap <C-s> :YcmCompleter GoTo<CR>
+set completeopt-=preview
