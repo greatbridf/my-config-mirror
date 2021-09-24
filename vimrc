@@ -29,6 +29,7 @@ colorscheme monokai
 nmap <C-n> :NERDTreeToggle<CR>
 nmap <C-g> :GitGutterToggle<CR>
 imap <TAB> <C-p>
+imap jk <ESC>
 map <C-t><C-t> :tabnew<CR>
 map <C-t><C-n> :tabnext<CR>
 nmap yall Gvgg"+y
@@ -60,5 +61,5 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " YouCompleteMe
-nmap <C-s> :YcmCompleter GoTo<CR>
+nmap <C-a> :YcmCompleter GoTo<CR>
 set completeopt-=preview
