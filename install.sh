@@ -91,9 +91,8 @@ install() {
     deploy_to_home gitmessage
 
     deploy_to_home vimrc
-    echo "installing vundle"
-    git clone https://github.com/VundleVim/Vundle.vim.git $__HOME/.vim/bundle/vundle
-    deploy vundle.vimrc $__HOME/.vim/vundlerc
+
+    install_vundle
 
     deploy_to_home zshrc
     echo "run the command below to install oh-my-zsh"
@@ -113,8 +112,19 @@ install_i3_config() {
     deploy i3-config $HOME/.config/i3/config
 }
 
+install_vundle() {
+    echo "installing vundle"
+    git clone https://github.com/VundleVim/Vundle.vim.git $__HOME/.vim/bundle/vundle
+    deploy vundle.vimrc $__HOME/.vim/vundlerc
+}
+
 if [ $1 = "i3-config" ]; then
     install_i3_config
+    exit
+fi
+
+if [ $1 = "vundle" ]; then
+    install_vundle
     exit
 fi
 
