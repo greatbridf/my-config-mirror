@@ -50,6 +50,11 @@ alias l="ls"
 alias ll="ls -lh"
 alias sizeof="du -hd 0"
 alias glggao='glgga --oneline'
+alias ip="ip -color"
+alias iptables="iptables --line-numbers"
+alias ip6tables="ip6tables --line-numbers"
+
+alias rcp="rsync -avhW --no-compress --progress "
 
 alias c="clear"
 
@@ -82,3 +87,22 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+if [ `uname -s` = "Linux" ]; then
+    alias scst='sudo systemctl start'
+    alias scsp='sudo systemctl stop'
+    alias scrl='sudo systemctl reload'
+    alias scrt='sudo systemctl restart'
+    alias sce='sudo systemctl enable'
+    alias scd='sudo systemctl disable'
+    alias scs='systemctl status'
+    alias scsw='systemctl show'
+    alias sclu='systemctl list-units'
+    alias scluf='systemctl list-unit-files'
+    alias sclt='systemctl list-timers'
+    alias scc='systemctl cat'
+    alias scie='systemctl is-enabled'
+fi
+
+export PATH=$PATH:$HOME/.local/bin
+
+export TERM=xterm-256color
