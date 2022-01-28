@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ $__PREFIX ]; then
   __HOME=$__PREFIX
@@ -26,14 +26,14 @@ __FILES=(
 check_file() {
   if [ -f $1 ]; then
     echo "test file $1 failed, exiting..."
-    exit
+    exit 1
   fi
 }
 
 check_dir() {
   if [ -d $1 ]; then
       echo "test dir $1 failed, exiting..."
-      exit
+      exit 1
   fi
 }
 
@@ -68,6 +68,7 @@ deploy() {
     message $1 $2
     if ! ln -s $(pwd)/$1 $2; then
         echo "cannot deploy $1 to $2 , exiting..."
+        exit 1
     fi
 }
 deploy_to_home() {
@@ -80,7 +81,7 @@ deploy_to_home() {
 confirm() {
     read -p "$1 (y/N) " __FLAG
     if [ $__FLAG != "y" ]; then
-        exit
+        exit 2
     fi
 }
 install() {
@@ -95,8 +96,8 @@ install() {
     install_vundle
 
     deploy_to_home zshrc
-    echo "run the command below to install oh-my-zsh"
-    echo 'sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+
+    echo 'oh-my-zsh is recommended. To install, run ./install.sh oh-my-zsh'
 
     echo "[recommended] install package: xorg i3 pulseaudio fcitx feh termite"
     deploy_to_home xinitrc
@@ -132,26 +133,36 @@ install_rime() {
     __dp_rime wubi86_jidian.txt
 }
 
-if [ $1 = "i3-config" ]; then
-    install_i3_config
-    exit
-fi
+install_oh_my_zsh() {
+    echo "installing oh-my-zsh over internet"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
 
-if [ $1 = "vundle" ]; then
-    install_vundle
-    exit
-fi
-
-if [ $1 = "rime" ]; then
-    install_rime
-    exit
-fi
-
-if [ $1 ]; then
-  check_file $__HOME/.$1
-  deploy_to_home $1
-  echo "fin"
-else
-  check_file_existance
-  install
-fi
+case "$1" in
+    i3-config)
+        install_i3_config
+        exit
+        ;;
+    vundle)
+        install_vundle
+        exit
+        ;;
+    rime)
+        install_rime
+        exit
+        ;;
+    oh-my-zsh)
+        install_oh_my_zsh
+        exit
+        ;;
+    '')
+        check_file_existance
+        install
+        exit
+        ;;
+    *)
+        check_file $__HOME/.$1
+        deploy_to_home $1
+        echo "fin"
+        ;;
+esac
