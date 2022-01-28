@@ -30,10 +30,10 @@ if [ -e $ZSH/oh-my-zsh.sh ]; then
   source $ZSH/oh-my-zsh.sh
 
 # prompt
-  NEWLINE=$'\n'
-  PROMPT="[%{$fg_bold[green]%}%M%{$reset_color%}:%{$fg_bold[cyan]%}%~%{$reset_color%}]${NEWLINE}"
-  PROMPT+="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
-  PROMPT+=' $(git_prompt_info)'
+NEWLINE=$'\n'
+PROMPT="[%{$fg_bold[green]%}%M%{$reset_color%}:%{$fg_bold[cyan]%}%~%{$reset_color%}]${NEWLINE}"
+PROMPT+="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
+PROMPT+=' $(git_prompt_info)'
 else
   echo "zsh is not found in $ZSH/oh-my-zsh.sh"
 fi
@@ -56,21 +56,37 @@ alias ip6tables="ip6tables --line-numbers"
 
 alias rcp="rsync -avhW --no-compress --progress "
 
+alias pps='ps -o user,uid,pid,ppid,sid,args'
+alias ppsu='pps -u'
+
 alias c="clear"
 
-if (which npm > /dev/null 2> /dev/null); then
-  alias cnpm="npm --registry=https://registry.npm.taobao.org \
-  --cache=$HOME/.npm/.cache/cnpm \
-  --disturl=https://npm.taobao.org/dist \
-  --userconfig=$HOME/.cnpmrc"
-fi
+alias sudo="sudo "
 
 #OS=$(uname -s)
 #if [ $OS = "Linux" ]; then
 #  alias __PROXY='HTTPS_PROXY=http://127.0.0.1:1080'
 #elif [ $OS = "Darwin" ]; then
-   alias __PROXY='HTTPS_PROXY=http://127.0.0.1:1087'
+   alias __PROXY='HTTPS_PROXY=socks5://127.0.0.1:1080'
 #fi
+
+# systemctl aliases
+
+if [ `uname -s` = "Linux" ]; then
+    alias scst='sudo systemctl start'
+    alias scsp='sudo systemctl stop'
+    alias scrl='sudo systemctl reload'
+    alias scrt='sudo systemctl restart'
+    alias sce='sudo systemctl enable'
+    alias scd='sudo systemctl disable'
+    alias scs='systemctl status'
+    alias scsw='systemctl show'
+    alias sclu='systemctl list-units'
+    alias scluf='systemctl list-unit-files'
+    alias sclt='systemctl list-timers'
+    alias scc='systemctl cat'
+    alias scie='systemctl is-enabled'
+fi
 
 # export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)

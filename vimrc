@@ -1,12 +1,12 @@
 syntax on
 set expandtab
-"set cindent
+set cindent
 "set softtabstop=4
 set shiftwidth=4
 set autoindent
 set hlsearch
 set incsearch
-set smartindent
+"set smartindent
 set nocompatible
 set noesckeys
 set tabstop=4
@@ -29,6 +29,7 @@ colorscheme monokai
 nmap <C-n> :NERDTreeToggle<CR>
 nmap <C-g> :GitGutterToggle<CR>
 imap <TAB> <C-p>
+imap jk <ESC>
 map <C-t><C-t> :tabnew<CR>
 map <C-t><C-n> :tabnext<CR>
 nmap yall Gvgg"+y
@@ -58,3 +59,7 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" YouCompleteMe
+nmap <C-a> :YcmCompleter GoTo<CR>
+set completeopt-=preview
