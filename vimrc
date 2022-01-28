@@ -23,7 +23,8 @@ filetype plugin on
 source ~/.vim/vundlerc
 
 " Use molokai color scheme
-colorscheme monokai
+set background=dark
+colorscheme PaperColor
 
 " Map shortcuts
 nmap <C-n> :NERDTreeToggle<CR>
