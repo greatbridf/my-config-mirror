@@ -1,0 +1,13 @@
+patch:
+  ascii_composer/good_old_caps_lock: false
+  ascii_composer/switch_key:
+    Caps_Lock: commit_code
+    Shift_L: noop
+    Shift_R: noop
+  schema_list:
+    - schema: wubi86_jidian
+#- schema: combo_pinyin
+  key_binder1:
+    bindings:
+      - { accept: semicolon, send: 2, when: has_menu }
+      - { accept: apostrophe, send: 3, when: has_menu }

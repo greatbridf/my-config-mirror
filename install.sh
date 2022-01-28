@@ -118,6 +118,20 @@ install_vundle() {
     deploy vundle.vimrc $__HOME/.vim/vundlerc
 }
 
+__dp_rime () {
+    deploy rime/$1 $HOME/Library/Rime/$1
+}
+
+install_rime() {
+    echo "installing rime"
+    __dp_rime default.custom.yaml
+    __dp_rime squirrel.custom.yaml
+    __dp_rime wubi86_jidian.dict.yaml
+    __dp_rime wubi86_jidian_user.dict.yaml
+    __dp_rime wubi86_jidian.schema.yaml
+    __dp_rime wubi86_jidian.txt
+}
+
 if [ $1 = "i3-config" ]; then
     install_i3_config
     exit
@@ -125,6 +139,11 @@ fi
 
 if [ $1 = "vundle" ]; then
     install_vundle
+    exit
+fi
+
+if [ $1 = "rime" ]; then
+    install_rime
     exit
 fi
 

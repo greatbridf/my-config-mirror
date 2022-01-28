@@ -1,0 +1,10 @@
+patch:
+  app_options:
+    com.apple.Spotlight:
+      ascii_mode: false
+    com.apple.Termianl:
+      ascii_mode: true
+    io.alacritty:
+      ascii_mode: true
+  style/inline_preedit: true
+  style/horizontal: true
