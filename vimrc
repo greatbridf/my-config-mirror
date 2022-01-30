@@ -63,4 +63,6 @@ autocmd BufWinLeave * call clearmatches()
 
 " YouCompleteMe
 nmap <C-a> :YcmCompleter GoTo<CR>
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_collect_identifiers_from_tag_files = 1
 set completeopt-=preview
