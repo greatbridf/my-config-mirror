@@ -41,7 +41,7 @@ fi
 # User configuration
 
 if (which go > /dev/null 2> /dev/null); then
-  export GOROOT=/usr/local/opt/go/libexec
+  export GOROOT=/usr/lib/go
   export GOPATH=/Users/david/.go
   export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
