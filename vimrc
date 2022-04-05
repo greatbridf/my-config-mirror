@@ -23,7 +23,7 @@ filetype plugin on
 source ~/.vim/vundlerc
 
 " Use molokai color scheme
-set background=dark
+"set background=dark
 colorscheme PaperColor
 
 " Map shortcuts
@@ -41,7 +41,7 @@ nmap <C-t><C-r> :execute "!g++ --std=c++2a ".expand("%:t")."&&./a.out&&rm a.out"
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key=','
 
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,vue EmmetInstall
 autocmd BufRead,BufNewFile *.ts set filetype=typescript
 
 " MatchTagAlways config
@@ -63,4 +63,6 @@ autocmd BufWinLeave * call clearmatches()
 
 " YouCompleteMe
 nmap <C-a> :YcmCompleter GoTo<CR>
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_collect_identifiers_from_tag_files = 1
 set completeopt-=preview
