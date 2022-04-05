@@ -51,15 +51,7 @@ deploy_to_home() {
         deploy "$1" "$PREFIX/$2"
     fi
 }
-confirm() {
-    read -r -p "$1 (y/N) " flag
-    if ! [ "$flag" = "y" ]; then
-        exit 2
-    fi
-}
 install() {
-    confirm "start deployment?"
-
     deploy_to_home gitconfig
     deploy_to_home gitmessage
 
@@ -96,6 +88,13 @@ __dp_rime () {
     fi
 }
 
+install_rime_skin() {
+    echo "installing fcitx5 themes"
+    cd "$PREFIX/.local/share/fcitx5/themes" || { echo "$PREFIX/.local/share/fcitx5/themes does not exist" && exit 1; }
+    git clone https://github.com/sxqsfun/fcitx5-sogou-themes.git
+    mv fcitx5-sogou-themes/Alpha-white .
+}
+
 install_rime() {
     echo "installing rime"
     __dp_rime default.custom.yaml
@@ -104,10 +103,9 @@ install_rime() {
     __dp_rime wubi86_jidian_user.dict.yaml
     __dp_rime wubi86_jidian.schema.yaml
     __dp_rime wubi86_jidian.txt
-    echo "installing fcitx5 themes"
-    cd "$PREFIX/.local/share/fcitx5/themes"
-    git clone https://github.com/sxqsfun/fcitx5-sogou-themes.git
-    mv fcitx5-sogou-themes/Alpha-white .
+    if [ "$(uname -s)" = "Linux" ]; then
+        install_rime_skin
+    fi
 }
 
 install_oh_my_zsh() {
