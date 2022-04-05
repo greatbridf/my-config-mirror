@@ -120,7 +120,11 @@ install_vundle() {
 }
 
 __dp_rime () {
-    deploy rime/$1 $HOME/Library/Rime/$1
+    if [ "$(uname -s)" = "Linux" ]; then
+        deploy rime/$1 $HOME/.local/share/fcitx5/rime/$1
+    elif [ "$(uname -s)" = "Darwin" ]; then
+        deploy rime/$1 $HOME/Library/Rime/$1
+    fi
 }
 
 install_rime() {
@@ -131,6 +135,10 @@ install_rime() {
     __dp_rime wubi86_jidian_user.dict.yaml
     __dp_rime wubi86_jidian.schema.yaml
     __dp_rime wubi86_jidian.txt
+    echo "installing fcitx5 themes"
+    cd $HOME/.local/share/fcitx5/themes
+    git clone https://github.com/sxqsfun/fcitx5-sogou-themes.git
+    mv fcitx5-sogou-themes/Alpha-white .
 }
 
 install_oh_my_zsh() {
@@ -153,6 +161,13 @@ case "$1" in
         ;;
     oh-my-zsh)
         install_oh_my_zsh
+        exit
+        ;;
+    alacritty)
+        _DEPLOY_TARGET=$__HOME/.config/alacritty/alacritty.yml
+        check_file $_DEPLOY_TARGET
+        create_dir_if_not_exist $HOME/.config/alacritty
+        deploy alacritty $_DEPLOY_TARGET
         exit
         ;;
     '')

@@ -1,9 +1,11 @@
 patch:
-  ascii_composer/good_old_caps_lock: false
-  ascii_composer/switch_key:
-    Caps_Lock: commit_code
-    Shift_L: noop
-    Shift_R: noop
+#  >>> NOTICE: enable manually for macos
+#  ascii_composer/good_old_caps_lock: false
+#  ascii_composer/switch_key:
+#    Caps_Lock: commit_code
+#    Shift_L: noop
+#    Shift_R: noop
+#  <<< END
   schema_list:
     - schema: wubi86_jidian
 #- schema: combo_pinyin
