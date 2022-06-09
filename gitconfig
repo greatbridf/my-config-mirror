@@ -21,6 +21,7 @@
 [merge]
 	tool = vimdiff
 	conflictstyle = merge
+    ff = false
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
