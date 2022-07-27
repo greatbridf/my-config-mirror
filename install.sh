@@ -51,6 +51,12 @@ deploy_to_home() {
         deploy "$1" "$PREFIX/$2"
     fi
 }
+deploy_fish_config() {
+    _DEPLOY_TARGET="$PREFIX/.config/fish/config.fish"
+    check_file "$_DEPLOY_TARGET"
+    create_dir_if_not_exist "$PREFIX/.config/fish"
+    deploy config.fish "$_DEPLOY_TARGET"
+}
 install() {
     deploy_to_home gitconfig
     deploy_to_home gitmessage
@@ -59,9 +65,7 @@ install() {
 
     install_vundle
 
-    deploy_to_home zshrc
-
-    echo 'oh-my-zsh is recommended. To install, run ./install.sh oh-my-zsh'
+    deploy_fish_config
 
     echo "[recommended] install package: xorg i3 pulseaudio fcitx feh termite"
 
@@ -122,6 +126,7 @@ Usage: sh install.sh [target]
     OR sh install.sh rime
     OR sh install.sh oh-my-zsh
     OR sh install.sh alacritty
+    OR sh install.sh config.fish
     OR sh install.sh help
 
     sh install [target]
@@ -130,7 +135,7 @@ Usage: sh install.sh [target]
 
     sh install all
 
-        install gitconfig gitmessage vimrc vundle and zshrc
+        install gitconfig gitmessage vimrc vundle and config.fish
 EOF
 }
 
@@ -157,6 +162,9 @@ case "$1" in
         create_dir_if_not_exist "$PREFIX/.config/alacritty"
         deploy alacritty "$_DEPLOY_TARGET"
         exit
+        ;;
+    config.fish)
+        deploy_fish_config
         ;;
     '')
         show_help
