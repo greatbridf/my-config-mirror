@@ -46,7 +46,7 @@ if status is-interactive
     alias gd='git diff '
     alias gc='git commit -v '
 
-    export GPG_TTY=$(tty)
+    export GPG_TTY=(tty)
     export EDITOR='vim'
     export PATH="$PATH:$HOME/.local/bin"
     export TERM=xterm-256color
