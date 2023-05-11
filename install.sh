@@ -63,7 +63,7 @@ install() {
 
     deploy_to_home vimrc
 
-    install_vundle
+    install_vimplug
 
     deploy_fish_config
 
@@ -78,10 +78,10 @@ install_i3_config() {
     deploy i3-config "$PREFIX/.config/i3/config"
 }
 
-install_vundle() {
-    echo "installing vundle"
-    git clone https://github.com/VundleVim/Vundle.vim.git "$PREFIX/.vim/bundle/vundle"
-    deploy vundle.vimrc "$PREFIX/.vim/vundlerc"
+install_vimplug() {
+    echo "installing vimplug"
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
 __dp_rime () {
@@ -122,7 +122,7 @@ cat 1>&2 <<EOF
 Usage: sh install.sh [target]
     OR sh install.sh all
     OR sh install.sh i3-config
-    OR sh install.sh vundle
+    OR sh install.sh vimplug
     OR sh install.sh rime
     OR sh install.sh oh-my-zsh
     OR sh install.sh alacritty
@@ -135,7 +135,7 @@ Usage: sh install.sh [target]
 
     sh install all
 
-        install gitconfig gitmessage vimrc vundle and config.fish
+        install gitconfig gitmessage vimrc vimplug and config.fish
 EOF
 }
 
@@ -144,8 +144,8 @@ case "$1" in
         install_i3_config
         exit
         ;;
-    vundle)
-        install_vundle
+    vimplug)
+        install_vimplug
         exit
         ;;
     rime)

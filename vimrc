@@ -1,3 +1,30 @@
+" vim-plug
+call plug#begin('~/.vim/plugged')
+
+" Plugins
+" Bundle 'docunext/closetag.vim'
+"
+" color schemes
+Plug 'crusoexia/vim-monokai'
+Plug 'tomasr/molokai'
+Plug 'joshdick/onedark.vim'
+Plug 'NLKNguyen/papercolor-theme'
+
+Plug 'scrooloose/nerdtree'
+" Bundle 'matchit.zip'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-gitgutter'
+Plug 'fatih/vim-go'
+Plug 'tpope/vim-surround'
+Plug 'mattn/emmet-vim'
+" Bundle 'Valloric/MatchTagAlways'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'Raimondi/delimitMate'
+
+call plug#end()
+
 syntax on
 set expandtab
 set cindent
@@ -19,13 +46,6 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 filetype plugin on
 
-" Include Vundle
-source ~/.vim/vundlerc
-
-" Use molokai color scheme
-"set background=dark
-colorscheme PaperColor
-
 " Map shortcuts
 nmap <C-n> :NERDTreeToggle<CR>
 nmap <C-g> :GitGutterToggle<CR>
@@ -34,7 +54,8 @@ imap jk <ESC>
 map <C-t><C-t> :tabnew<CR>
 map <C-t><C-n> :tabnext<CR>
 nmap yall Gvgg"+y
-nmap <C-t><C-r> :execute "!g++ --std=c++2a ".expand("%:t")."&&./a.out&&rm a.out"<CR>
+nmap <C-t><C-r> :execute "!g++ -Werror -Wall --std=c++2a ".expand("%:t")."&&./a.out&&rm a.out"<CR>
+map <Enter> :nohl<CR>
 
 " Emmet config
 
@@ -63,6 +84,6 @@ autocmd BufWinLeave * call clearmatches()
 
 " YouCompleteMe
 nmap <C-a> :YcmCompleter GoTo<CR>
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tag_files = 1
 set completeopt-=preview
