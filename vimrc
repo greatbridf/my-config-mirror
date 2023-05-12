@@ -46,18 +46,45 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 colorscheme monokai
 set background=dark
 
+let mapleader = ' '
+
 filetype plugin on
 
+" Define functions
+function! GreatbridfRun(filename)
+    if a:filename =~ "\.c$"
+        execute("!gcc -Werror -Wall -o ./.__gbtmp " . a:filename . "&&./.__gbtmp&&rm ./.__gbtmp")
+        return
+    endif
+
+    if a:filename =~ "\.cpp$" || a:filename =~ "\.cc$"
+        execute("!g++ -Werror -Wall --std=c++2a -o ./.__gbtmp " . a:filename . "&&./.__gbtmp&&rm ./.__gbtmp")
+        return
+    endif
+
+    if a:filename =~ "\.py$"
+        execute("!python3 " . a:filename)
+        return
+    endif
+
+    if a:filename =~ "\.js$"
+        execute("!node " . a:filename)
+        return
+    endif
+
+    echo "No action available for file " . a:filename
+endfunction
+
 " Map shortcuts
-nmap <C-n> :NERDTreeToggle<CR>
-nmap <C-g> :GitGutterToggle<CR>
+nmap <leader>tr :NERDTreeToggle<CR>
+" nmap <C-g> :GitGutterToggle<CR>
 " imap <TAB> <C-p>
 imap jk <ESC>
-map <C-t><C-t> :tabnew<CR>
-map <C-t><C-n> :tabnext<CR>
+nmap <leader>tt :tabnew<CR>
+nmap <leader>tn :tabnext<CR>
 nmap yall Gvgg"+y
-nmap <C-t><C-r> :execute "!g++ -Werror -Wall --std=c++2a ".expand("%:t")."&&./a.out&&rm a.out"<CR>
-map <Enter> :nohl<CR>
+nmap <leader>run :call GreatbridfRun(expand("%:t"))<CR>
+nmap <leader><CR> :nohl<CR>
 
 " Emmet config
 
