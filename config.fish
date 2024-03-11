@@ -50,4 +50,8 @@ if status is-interactive
     export EDITOR='vim'
     export PATH="$PATH:$HOME/.local/bin"
     export TERM=xterm-256color
+
+    if test -f /opt/homebrew/bin/brew
+        eval (/opt/homebrew/bin/brew shellenv)
+    end
 end

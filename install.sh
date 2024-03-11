@@ -174,6 +174,14 @@ case "$1" in
         show_help
         exit
         ;;
+    disable-key-repeating)
+        if test `uname -s` != "Darwin"; then
+            echo "This operation could only be done under macOS."
+            exit 1
+        fi
+        defaults write -g ApplePressAndHoldEnabled -bool false
+        exit
+        ;;
     all)
         install
         exit
