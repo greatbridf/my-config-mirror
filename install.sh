@@ -174,6 +174,14 @@ case "$1" in
         show_help
         exit
         ;;
+    enable-click-and-drag)
+        if test `uname -s` != "Darwin"; then
+            echo "This operation could only be done under macOS."
+            exit 1
+        fi
+        defaults write -g NSWindowShouldDragOnGesture -bool true
+        exit
+        ;;
     disable-key-repeating)
         if test `uname -s` != "Darwin"; then
             echo "This operation could only be done under macOS."

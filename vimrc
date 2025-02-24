@@ -20,7 +20,8 @@ Plug 'mattn/emmet-vim'
 " Bundle 'Valloric/MatchTagAlways'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Raimondi/delimitMate'
+Plug 'LunarWatcher/auto-pairs'
+Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -43,8 +44,8 @@ set relativenumber
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
-colorscheme monokai
-set background=dark
+colorscheme PaperColor
+set background=light
 
 let mapleader = ' '
 
@@ -52,22 +53,27 @@ filetype plugin on
 
 " Define functions
 function! GreatbridfRun(filename)
-    if a:filename =~ "\.c$"
+    if a:filename =~ "\\.rs$"
+        execute("!rustc -o ./.__gbtmp " . a:filename . "&&./.__gbtmp&&rm ./.__gbtmp")
+        return
+    endif
+
+    if a:filename =~ "\\.c$"
         execute("!gcc -Werror -Wall -o ./.__gbtmp " . a:filename . "&&./.__gbtmp&&rm ./.__gbtmp")
         return
     endif
 
-    if a:filename =~ "\.cpp$" || a:filename =~ "\.cc$"
-        execute("!g++ -Werror -Wall --std=c++2a -o ./.__gbtmp " . a:filename . "&&./.__gbtmp&&rm ./.__gbtmp")
+    if a:filename =~ "\\.cpp$" || a:filename =~ "\\.cc$"
+        execute("!g++ -Werror -Wall -std=c++2a -o ./.__gbtmp " . a:filename . "&&./.__gbtmp&&rm ./.__gbtmp")
         return
     endif
 
-    if a:filename =~ "\.py$"
+    if a:filename =~ "\\.py$"
         execute("!python3 " . a:filename)
         return
     endif
 
-    if a:filename =~ "\.js$"
+    if a:filename =~ "\\.js$"
         execute("!node " . a:filename)
         return
     endif
@@ -76,15 +82,17 @@ function! GreatbridfRun(filename)
 endfunction
 
 " Map shortcuts
-nmap <leader>tr :NERDTreeToggle<CR>
+nmap <silent><leader>tr :NERDTreeToggle<CR>
 " nmap <C-g> :GitGutterToggle<CR>
 " imap <TAB> <C-p>
 imap jk <ESC>
-nmap <leader>tt :tabnew<CR>
-nmap <leader>tn :tabnext<CR>
+nmap <silent><leader>tt :tabnew<CR>
+nmap <silent><leader>tn :tabnext<CR>
 nmap yall Gvgg"+y
-nmap <leader>run :call GreatbridfRun(expand("%:t"))<CR>
-nmap <leader><CR> :nohl<CR>
+nmap <silent><leader>run :call GreatbridfRun(expand("%:t"))<CR>
+nmap <silent><leader><CR> :nohl<CR>
+nmap <silent><leader>s :<C-u>CocList -I symbols<CR>
+nmap <leader>cpp :set filetype=cpp<CR> :set syntax=cpp<CR>
 
 " Emmet config
 
@@ -162,7 +170,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> <C-a> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> fe <Plug>(coc-references)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -182,8 +190,11 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>ff  <Plug>(coc-format-selected)
+nmap <leader>ff  <Plug>(coc-format-selected)
+
+xmap <leader>fa  <Plug>(coc-format)
+nmap <leader>fa  <Plug>(coc-format)
 
 augroup mygroup
   autocmd!
@@ -223,3 +234,29 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
+
+nnoremap <silent> <leader>hint :CocCommand document.toggleInlayHint<CR>
+nnoremap <silent> <leader>w= <C-w>110\|
+nnoremap <silent> <leader>wh <C-w>h<C-w>110\|
+nnoremap <silent> <leader>wj <C-w>j<C-w>110\|
+nnoremap <silent> <leader>wk <C-w>k<C-w>110\|
+nnoremap <silent> <leader>wl <C-w>l<C-w>110\|
+
+vnoremap <silent> <leader>wr( c(<C-r>")<ESC>
+vnoremap <silent> <leader>wr" c"<C-r>""<ESC>
+vnoremap <silent> <leader>wr' c'<C-r>"'<ESC>
+vnoremap <silent> <leader>wr{ c{<C-r>"}<ESC>
+vnoremap <silent> <leader>wr[ c[<C-r>"]<ESC>
+vnoremap <silent> <leader>wr< c<<C-r>"><ESC>
+
+nnoremap <silent> <leader>un( yi(va(p
+nnoremap <silent> <leader>un" yi"va"p
+nnoremap <silent> <leader>un' yi'va'p
+nnoremap <silent> <leader>un{ yi{va{p
+nnoremap <silent> <leader>un[ yi[va[p
+nnoremap <silent> <leader>un< yi<va<p
+
+" git mergetool
+nnoremap <silent> <leader>dl :diffget LOCAL<CR>
+nnoremap <silent> <leader>db :diffget BASE<CR>
+nnoremap <silent> <leader>dr :diffget REMOTE<CR>

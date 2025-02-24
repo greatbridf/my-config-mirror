@@ -32,13 +32,21 @@ if status is-interactive
     alias gst='git status '
     alias gco='git checkout '
     alias ga='git add '
+    alias gap='git add -p '
     alias grs='git restore '
+    alias grsp='git restore -p '
     alias grst='git restore --staged '
+    alias grstp='git restore --staged -p '
     alias gcb='gco -b '
     alias gbD='git branch -D '
+    alias gbd='git branch -d '
     alias gp='git push '
+    alias gpu='git push -u '
     alias gl='git pull '
     alias gm='git merge '
+    alias gmt='git mergetool --tool=vimdiff '
+    alias gmff='git merge --ff-only'
+    alias gmnff='git merge --no-ff '
     alias grb='git rebase '
     alias glgga='git log --graph --decorate --all '
     alias glggao='glgga --oneline '
@@ -48,10 +56,32 @@ if status is-interactive
 
     export GPG_TTY=(tty)
     export EDITOR='vim'
-    export PATH="$PATH:$HOME/.local/bin"
+    export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin:/Users/david/.local/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-apple-darwin/bin"
     export TERM=xterm-256color
+    export __GB_PROXY="http://127.0.0.1:8118"
 
+    alias prun='ALL_PROXY="$__GB_PROXY" HTTP_PROXY="$__GB_PROXY" HTTPS_PROXY="$__GB_PROXY" '
+
+    # homebrew
     if test -f /opt/homebrew/bin/brew
         eval (/opt/homebrew/bin/brew shellenv)
+    end
+
+    export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+    export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+    export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+    export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+    export HOMEBREW_PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
+
+    # find
+    function gfind
+        if test (count $argv) -eq 0
+            echo invalid arguments
+            return 1
+        else if test (count $argv) -eq 1
+            set argv[2] '.'
+        end
+
+        find $argv[2..-1] -type file -exec grep -n --color=always  -H -i $argv[1] {} \; -exec echo '' \;
     end
 end
