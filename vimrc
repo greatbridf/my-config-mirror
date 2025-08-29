@@ -26,23 +26,39 @@ Plug 'github/copilot.vim'
 call plug#end()
 
 syntax on
-set expandtab
+
 set cindent
-"set softtabstop=4
+
+" Whether or not to use spaces in replace of tabs
+set expandtab
+
+" Note:
+" Keep the following two consistent!!!
+
+" The width of \t characters shown on the screen
+set tabstop=4
+
+" The width to shift on each >> or << commands
 set shiftwidth=4
+
+" Mix tabs and spaces to reach the visible width on each tab key pressed
+set softtabstop=-1
+
 set autoindent
 set hlsearch
 set incsearch
 "set smartindent
 set nocompatible
 set noesckeys
-set tabstop=4
-set backspace=2
+set backspace=indent,eol,start
 set nu
 set relativenumber
 " Encodings
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+
+" Highlight tab space and etc.
+set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
 colorscheme PaperColor
 set background=light
@@ -260,3 +276,14 @@ nnoremap <silent> <leader>un< yi<va<p
 nnoremap <silent> <leader>dl :diffget LOCAL<CR>
 nnoremap <silent> <leader>db :diffget BASE<CR>
 nnoremap <silent> <leader>dr :diffget REMOTE<CR>
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+nnoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+nnoremap <expr><C-d> coc#float#has_scroll() ? coc#float#scroll(1, 10) : "\<C-d>"
+nnoremap <expr><C-u> coc#float#has_scroll() ? coc#float#scroll(0, 10) : "\<C-u>"
+
+inoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<Right>"
+inoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<Left>"
+inoremap <expr><C-d> coc#float#has_scroll() ? coc#float#scroll(1, 10) : "\<Right>"
+inoremap <expr><C-u> coc#float#has_scroll() ? coc#float#scroll(0, 10) : "\<Left>"
