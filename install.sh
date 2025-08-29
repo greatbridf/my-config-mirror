@@ -62,6 +62,7 @@ install() {
     deploy_to_home gitmessage
 
     deploy_to_home vimrc
+    deploy_to_home tmux.conf
 
     install_vimplug
 
