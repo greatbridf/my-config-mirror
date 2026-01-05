@@ -44,6 +44,12 @@ set shiftwidth=4
 " Mix tabs and spaces to reach the visible width on each tab key pressed
 set softtabstop=-1
 
+" textwidth, wrapping lines to 80 in length
+set tw=80
+
+" colorcolumn, show a colored ruler there
+set colorcolumn=80,100
+
 set autoindent
 set hlsearch
 set incsearch
@@ -96,6 +102,10 @@ function! GreatbridfRun(filename)
 
     echo "No action available for file " . a:filename
 endfunction
+
+" Swap 0 and ^
+nnoremap 0 ^
+nnoremap ^ 0
 
 " Map shortcuts
 nmap <silent><leader>tr :NERDTreeToggle<CR>
