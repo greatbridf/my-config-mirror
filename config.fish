@@ -3,7 +3,6 @@ if status is-interactive
     alias l="ls"
     alias ll="ls -lh"
     alias sizeof="du -hd 0"
-    alias glggao='glgga --oneline'
     alias ip="ip -color"
     alias iptables="iptables -n --line-numbers"
     alias ip6tables="ip6tables -n --line-numbers"
@@ -48,11 +47,15 @@ if status is-interactive
     alias gmff='git merge --ff-only'
     alias gmnff='git merge --no-ff '
     alias grb='git rebase '
-    alias glgga='git log --graph --decorate --all '
+    alias glgg='git log --graph --decorate '
+    alias glgga='glgg --all '
     alias glggao='glgga --oneline '
     alias gr='git remote '
     alias gd='git diff '
-    alias gc='git commit -v '
+    alias gdc='git diff --cached '
+    alias gdh='git diff HEAD '
+    alias gc='git commit -v -s '
+    alias gcam='git commit --amend'
 
     export GPG_TTY=(tty)
     export EDITOR='vim'
