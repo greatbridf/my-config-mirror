@@ -21,7 +21,7 @@ Plug 'mattn/emmet-vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'LunarWatcher/auto-pairs'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 call plug#end()
 
