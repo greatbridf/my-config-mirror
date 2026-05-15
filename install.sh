@@ -140,6 +140,52 @@ Usage: sh install.sh [target]
 EOF
 }
 
+fatal() {
+	echo "fatal: $1" >&2
+	exit 1
+}
+
+info() {
+	echo "info: $1" >&2
+}
+
+check_exists() {
+	if [ -e "$1" ]; then
+		return
+	fi
+
+	return 1
+}
+
+new_deploy() {
+	local config config_name target target_dir
+	[ $# -ge 1 ] && config="$(realpath "$1")" || fatal "invalid argument to new_deploy"
+	config_name="$(basename "$config")"
+
+	[ $# -ge 2 ] && target="$2" || target="$HOME/.$config_name"
+	target_dir="$(dirname "$target")"
+
+	if check_exists "$target"; then
+		local backup_target="$target_dir/$config_name.old"
+		info "$target exists, backing up to $backup_target"
+		mv "$target" "$backup_target"
+	fi
+
+	info "deploying $config to $target"
+	ln -s "$config" "$target"
+}
+
+new_all() {
+	new_deploy gitconfig
+	new_deploy gitmessage
+
+	new_deploy vimrc
+	new_deploy tmux.conf
+	new_deploy config.fish "$HOME/.config/fish/config.fish"
+
+	install_vimplug
+}
+
 case "$1" in
     i3-config)
         install_i3_config
@@ -195,6 +241,10 @@ case "$1" in
         install
         exit
         ;;
+    new-all)
+	    new_all
+	    exit
+	    ;;
     *)
         check_file "$PREFIX/.$1"
         deploy_to_home "$1"
