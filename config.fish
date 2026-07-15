@@ -29,6 +29,7 @@ if status is-interactive
     alias scie='systemctl is-enabled'
 
     alias gst='git status '
+    alias gsh='git stash '
     alias gco='git checkout '
     alias ga='git add '
     alias gap='git add -p '
