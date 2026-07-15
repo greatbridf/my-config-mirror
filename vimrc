@@ -38,10 +38,10 @@ set expandtab
 " Keep the following two consistent!!!
 
 " The width of \t characters shown on the screen
-set tabstop=4
+set tabstop=8
 
 " The width to shift on each >> or << commands
-set shiftwidth=4
+set shiftwidth=8
 
 " Mix tabs and spaces to reach the visible width on each tab key pressed
 set softtabstop=-1
