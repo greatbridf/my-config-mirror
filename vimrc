@@ -27,6 +27,8 @@ call plug#end()
 
 syntax on
 
+set ml mls=5
+
 set cindent
 
 " Whether or not to use spaces in replace of tabs
