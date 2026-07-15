@@ -3,9 +3,6 @@ if status is-interactive
     alias l="ls"
     alias ll="ls -lh"
     alias sizeof="du -hd 0"
-    alias ip="ip -color"
-    alias iptables="iptables -n --line-numbers"
-    alias ip6tables="ip6tables -n --line-numbers"
 
     alias rcp="rsync -avhW --no-compress --progress "
 
@@ -37,9 +34,11 @@ if status is-interactive
     alias grst='git restore --staged '
     alias grstp='git restore --staged -p '
     alias gcb='gco -b '
+    alias gbc='git branch | grep "*" | awk "{print \$2}"'
     alias gbD='git branch -D '
     alias gbd='git branch -d '
     alias gp='git push '
+    alias gpc='gp -u origin (gbc)'
     alias gpu='git push -u '
     alias gl='git pull '
     alias gm='git merge '
@@ -47,15 +46,33 @@ if status is-interactive
     alias gmff='git merge --ff-only'
     alias gmnff='git merge --no-ff '
     alias grb='git rebase '
-    alias glgg='git log --graph --decorate '
+    alias grba='grb --abort'
+    alias grbc='grb --continue'
+    alias grbi='grb -i '
+
+    alias glg='git log --decorate '
+    alias glgg='glg --graph '
+
+    alias glga='glg --all '
+    alias glgo='glg --oneline'
+    alias glgao='glga --oneline '
+
     alias glgga='glgg --all '
+    alias glggo='glgg --oneline'
     alias glggao='glgga --oneline '
+
     alias gr='git remote '
     alias gd='git diff '
     alias gdc='git diff --cached '
     alias gdh='git diff HEAD '
     alias gc='git commit -v -s '
-    alias gcam='git commit --amend'
+    alias gcam='gc --amend '
+    alias gam='git am '
+    alias gamr='gam --reject '
+    alias gama='gam --abort'
+    alias gamc='gam --continue'
+
+    alias gig='git grep '
 
     export GPG_TTY=(tty)
     export EDITOR='vim'
