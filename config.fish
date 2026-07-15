@@ -84,7 +84,8 @@ if status is-interactive
     export TERM=xterm-256color
     export __GB_PROXY="http://127.0.0.1:8118"
 
-    alias prun='ALL_PROXY="$__GB_PROXY" HTTP_PROXY="$__GB_PROXY" HTTPS_PROXY="$__GB_PROXY" '
+    alias prun='ALL_PROXY="$__GB_PROXY" HTTP_PROXY="$__GB_PROXY" \
+    HTTPS_PROXY="$__GB_PROXY" http_proxy="$__GB_PROXY" '
 
     # homebrew
     if test -f /opt/homebrew/bin/brew
