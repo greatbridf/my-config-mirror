@@ -29,3 +29,7 @@
 	process = git-lfs filter-process
 [pull]
 	ff = only
+
+[pretty]
+	ref = %h (\"%s\")
+	fixes = Fixes: %h (\"%s\")
