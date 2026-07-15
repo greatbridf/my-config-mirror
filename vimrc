@@ -130,6 +130,8 @@ let g:user_emmet_leader_key=','
 autocmd FileType html,css,vue EmmetInstall
 autocmd BufRead,BufNewFile *.ts set filetype=typescript
 
+autocmd FileType git,gitrebase set kp=git\ show
+
 " MatchTagAlways config
 
 let g:mta_filetypes = {
