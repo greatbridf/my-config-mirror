@@ -33,3 +33,6 @@
 [pretty]
 	ref = %h (\"%s\")
 	fixes = Fixes: %h (\"%s\")
+
+[rebase]
+	updateRefs = true
