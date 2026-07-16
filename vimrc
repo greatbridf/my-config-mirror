@@ -130,7 +130,49 @@ let g:user_emmet_leader_key=','
 autocmd FileType html,css,vue EmmetInstall
 autocmd BufRead,BufNewFile *.ts set filetype=typescript
 
-autocmd FileType git,gitrebase set kp=git\ show
+function s:GreatbridfPopupFilter(winid, key)
+        if a:key == "\<c-j>"
+                call win_execute(a:winid, "normal! \<c-e>")
+        elseif a:key == "\<c-k>"
+                call win_execute(a:winid, "normal! \<c-y>")
+        elseif a:key == "\<c-d>"
+                call win_execute(a:winid, "normal! \<c-d>")
+        elseif a:key == "\<c-u>"
+                call win_execute(a:winid, "normal! \<c-u>")
+        elseif a:key == "\<c-c>" || a:key == "q"
+                call popup_close(a:winid)
+        else
+                return v:false
+        endif
+
+        return v:true
+endfunction
+
+function GreatbridfGitShow(commit)
+        call system("git describe --always " . a:commit)
+
+        if v:shell_error != 0
+                echohl WarningMsg
+                        \ | echo a:commit . " is not a valid git commit"
+                        \ | echohl None
+                return 1
+        endif
+
+        let l:winid = popup_create(systemlist("git show " . a:commit), #{
+                                \ pos: 'topleft', moved: 'WORD',
+                                \ line: 'cursor+1', col: 'cursor',
+                                \ border: [],
+                                \ minwidth: &columns / 2,
+                                \ maxwidth: &columns - 6,
+                                \ filter: 's:GreatbridfPopupFilter',
+                                \ filtermode: 'n',
+                                \ })
+        call setbufvar(winbufnr(l:winid), '&ft', 'git')
+endfunction
+
+command -nargs=1 GreatbridfGitShow call GreatbridfGitShow(<q-args>)
+
+autocmd FileType git,gitrebase set kp=:GreatbridfGitShow
 
 " MatchTagAlways config
 
