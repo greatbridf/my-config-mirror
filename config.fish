@@ -1,6 +1,8 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
     alias k='kubectl '
+    alias ka='k apply '
+    alias kaf='ka -f '
     alias kd='k describe '
     alias kg='k get '
     alias l="ls"
