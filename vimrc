@@ -333,6 +333,27 @@ nnoremap <silent> <leader>dl :diffget LOCAL<CR>
 nnoremap <silent> <leader>db :diffget BASE<CR>
 nnoremap <silent> <leader>dr :diffget REMOTE<CR>
 
+" git merge
+nnoremap <silent> <leader>mn /<<<<<<<<CR>
+nnoremap <silent> <leader>mp ?<<<<<<<<CR>
+
+nnoremap <silent> <leader>hn /^@@<CR>
+nnoremap <silent> <leader>hp ?^@@<CR>
+
+function! Merged()
+	if getline(1,'$') == ['']
+		execute("silent !rm %")
+		execute("qa")
+	else
+		echohl WarningMsg
+		echo "Current buffer is not empty, are you sure?"
+		echohl None
+	endif
+endfunction
+
+command Mrgd call Merged()
+nnoremap <silent> <leader>md :Mrgd
+
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 nnoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 nnoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
