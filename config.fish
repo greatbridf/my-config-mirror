@@ -14,6 +14,8 @@ if status is-interactive
 
     alias c="clear"
 
+    alias viam="vi -c 'vnew %.rej' "
+
     alias scst='sudo systemctl start'
     alias scsp='sudo systemctl stop'
     alias scrl='sudo systemctl reload'
