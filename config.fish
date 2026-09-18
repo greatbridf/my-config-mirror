@@ -40,6 +40,7 @@ if status is-interactive
     alias gap='git add -p '
     alias grs='git restore '
     alias grt='git reset '
+    alias grth='grt --hard '
     alias grsp='git restore -p '
     alias grst='git restore --staged '
     alias grstp='git restore --staged -p '
