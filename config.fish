@@ -86,7 +86,7 @@ if status is-interactive
 
     export GPG_TTY=(tty)
     export EDITOR='vim'
-    export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin:/Users/david/.local/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-apple-darwin/bin"
+    export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
     export TERM=xterm-256color
     export __GB_PROXY="http://127.0.0.1:8118"
 
