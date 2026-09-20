@@ -1,6 +1,7 @@
 {
   "coc.nvim": { "branch": "release", "commit": "85709b90d7d3fa6962609b6adadac9f7b2067819" },
   "command-palette.nvim": { "branch": "main", "commit": "fa169c7c3bc35d370399caadb81c7b705c957733" },
+  "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "nvim-web-devicons": { "branch": "master", "commit": "914decffe650296c87312c53b7933ecb86718499" },
   "papercolor-theme": { "branch": "master", "commit": "0cfe64ffb24c21a6101b5f994ca342a74c977aef" },
