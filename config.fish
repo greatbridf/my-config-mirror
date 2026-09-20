@@ -130,6 +130,10 @@ if status is-interactive
                 -c 'norm gg'
     end
 
+    function glgp
+        glgo $argv[1] | head -n $argv[2] | tac
+    end
+
     bind \ej down-or-search
     bind \ek up-or-search
 end
