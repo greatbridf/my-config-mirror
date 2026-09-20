@@ -116,6 +116,14 @@ if status is-interactive
         find $argv[2..-1] -type file -exec grep -n --color=always  -H -i $argv[1] {} \; -exec echo '' \;
     end
 
+    # git am helpers
+
+    function glggrep
+        set msg "$argv[1]"
+        set argv[1] --
+        git log --oneline --max-count=2 --grep="$msg" $argv
+    end
+
     function glgv
         vim -c "silent r!git log --oneline --graph $argv" \
                 -c 'set bt=nofile noma ft=git' \
