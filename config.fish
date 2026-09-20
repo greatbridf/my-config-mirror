@@ -72,6 +72,7 @@ if status is-interactive
     alias glggo='glgg --oneline'
     alias glggao='glgga --oneline '
 
+    alias gib='git blame '
     alias gr='git remote '
     alias gd='git diff '
     alias gdc='git diff --cached '
