@@ -1,5 +1,5 @@
 vim.opt.termguicolors = true
-vim.cmd.colorscheme('PaperColor')
+vim.opt.background = 'light'
 
--- vim-airline theme
+vim.cmd.colorscheme('PaperColor')
 vim.cmd.AirlineTheme('powerlineish')
