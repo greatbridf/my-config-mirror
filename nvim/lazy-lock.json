@@ -1,0 +1,13 @@
+{
+  "coc.nvim": { "branch": "release", "commit": "85709b90d7d3fa6962609b6adadac9f7b2067819" },
+  "command-palette.nvim": { "branch": "main", "commit": "fa169c7c3bc35d370399caadb81c7b705c957733" },
+  "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
+  "nvim-web-devicons": { "branch": "master", "commit": "914decffe650296c87312c53b7933ecb86718499" },
+  "papercolor-theme": { "branch": "master", "commit": "0cfe64ffb24c21a6101b5f994ca342a74c977aef" },
+  "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
+  "telescope-fzf-native.nvim": { "branch": "main", "commit": "b25b749b9db64d375d782094e2b9dce53ad53a40" },
+  "telescope.nvim": { "branch": "master", "commit": "5255aa27c422de944791318024167ad5d40aad20" },
+  "vim-airline": { "branch": "master", "commit": "ae24f4aca06731d5d7224df1fc5415975331b214" },
+  "vim-airline-themes": { "branch": "master", "commit": "77aab8c6cf7179ddb8a05741da7e358a86b2c3ab" },
+  "vim-gitgutter": { "branch": "main", "commit": "90b75207bd9b55d8ac4af15f72b4e935462014d0" }
+}
