@@ -65,6 +65,7 @@ install() {
     deploy_to_home tmux.conf
 
     install_vimplug
+    install_nvimplug
 
     deploy_fish_config
 
@@ -83,6 +84,12 @@ install_vimplug() {
     echo "installing vimplug"
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+}
+
+install_nvimplug() {
+    echo "installing vim-plug for nvim"
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 }
 
 __dp_rime () {
@@ -193,6 +200,10 @@ case "$1" in
         ;;
     vimplug)
         install_vimplug
+        exit
+        ;;
+    nvimplug)
+        install_nvimplug
         exit
         ;;
     rime)
