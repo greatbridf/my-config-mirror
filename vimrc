@@ -337,22 +337,32 @@ nnoremap <silent> <leader>dr :diffget REMOTE<CR>
 nnoremap <silent> <leader>mn /<<<<<<<<CR>
 nnoremap <silent> <leader>mp ?<<<<<<<<CR>
 
-nnoremap <silent> <leader>hn /^@@<CR>
-nnoremap <silent> <leader>hp ?^@@<CR>
+nnoremap <silent> <leader>hn /^@@<CR>t(*N<C-w>ln
+nnoremap <silent> <leader>hp ?^@@<CR>t(*N<C-w>ln
+
+nnoremap <silent> <leader>gcp :!git cpick <cword><CR>
 
 function! Merged()
-	if getline(1,'$') == ['']
+	if getline(1,'$') == [''] || g:merged_sure == 1
 		execute("silent !rm %")
 		execute("qa")
 	else
 		echohl WarningMsg
 		echo "Current buffer is not empty, are you sure?"
 		echohl None
+		let g:merged_sure = 1
 	endif
 endfunction
 
+function! FindUpstream()
+	r!git log --oneline --no-patch --grep="Fixes: $(echo <cword> | head -c 12)" refs/tags/v5.4..refs/remotes/upstream/master | tac
+endfunction
+
+nnoremap <silent> <leader>mu :call FindUpstream()<CR>
+
+let g:merged_sure = 0
 command Mrgd call Merged()
-nnoremap <silent> <leader>md :Mrgd
+nnoremap <silent> <leader>md :Mrgd<CR>
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 nnoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
