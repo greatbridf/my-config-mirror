@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+	echo "usage: <patch> <output>"
+	exit 1
+fi
+
+commit="$1"
+shift
+
+output="$1"
+shift
+
+git format-patch --output="$output" "$commit~..$commit"

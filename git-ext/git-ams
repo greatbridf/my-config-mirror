@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+	echo "usage: <patch>"
+	exit 1
+fi
+
+patch="$1"
+shift
+
+commitid="$(cat "$patch" | head -n 1 | cut -d\  -f 2)"
+
+reformat_patch() {
+	# header
+	cat "$patch" | grep -B 1000 '^$' -m 1
+
+	echo "commit $commitid upstream"
+	echo "Conflict: none" # change this on demand
+
+	cat "$patch" | grep -A 1000000 '^$' -m 1
+}
+
+reformat_patch | git am -s --reject

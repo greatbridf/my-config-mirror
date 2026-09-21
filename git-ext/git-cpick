@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+	echo "usage: <ref>"
+	exit 1
+fi
+
+ref="$1"
+shift
+
+tmpfile="$(mktemp -u).patch"
+
+git fmtp "$ref" "$tmpfile"
+git ams "$tmpfile"
