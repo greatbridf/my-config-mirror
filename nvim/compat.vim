@@ -77,7 +77,6 @@ nmap <silent><leader>tn :tabnext<CR>
 nmap yall Gvgg"+y
 nmap <silent><leader>run :call GreatbridfRun(expand("%:t"))<CR>
 nmap <silent><leader><CR> :nohl<CR>
-nmap <silent><leader>s :<C-u>CocList -I symbols<CR>
 nmap <leader>cpp :set filetype=cpp<CR> :set syntax=cpp<CR>
 
 " Emmet config
