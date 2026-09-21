@@ -2,6 +2,7 @@
   "coc.nvim": { "branch": "release", "commit": "85709b90d7d3fa6962609b6adadac9f7b2067819" },
   "command-palette.nvim": { "branch": "main", "commit": "fa169c7c3bc35d370399caadb81c7b705c957733" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
+  "git-blame.nvim": { "branch": "main", "commit": "5c536e2d4134d064aa3f41575280bc8a2a0e03d7" },
   "lazy.nvim": { "branch": "main", "commit": "85c7ff3711b730b4030d03144f6db6375044ae82" },
   "nvim-web-devicons": { "branch": "master", "commit": "914decffe650296c87312c53b7933ecb86718499" },
   "papercolor-theme": { "branch": "master", "commit": "0cfe64ffb24c21a6101b5f994ca342a74c977aef" },
