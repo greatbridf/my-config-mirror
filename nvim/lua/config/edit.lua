@@ -12,3 +12,6 @@ vim.opt.signcolumn = 'yes'
 
 -- Alawys disable mouse
 vim.opt.mouse = ''
+
+-- Allow edited buffers to go background
+vim.opt.hidden = true
