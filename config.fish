@@ -126,7 +126,8 @@ if status is-interactive
 
     function glgv
         vim -c "silent r!git log --oneline --graph $argv" \
-                -c 'set bt=nofile noma ft=git' \
+                -c 'set bt=nofile ft=git' \
+                -c 'setl noma' \
                 -c 'norm gg'
     end
 
